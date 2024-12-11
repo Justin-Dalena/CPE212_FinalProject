@@ -1,5 +1,4 @@
 [server]
 
 server1 ansible_host=192.168.44.131
-server2 ansible_host=192.168.44.132
-server3 ansible_host=192.168.44.128
+server3 ansible_host=192.168.44.132

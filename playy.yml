@@ -1,0 +1,63 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install required packages for Debian
+      apt:
+        name: 
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Docker from default repositories (Debian)
+      apt:
+        name: docker.io
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Start and enable Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Python pip for Debian
+      apt:
+        name: python3-pip
+        state: present
+      when: ansible_os_family == "Debian"
+
+
+    - name: Create Dockerfile directory
+      file:
+        path: ~/docker_project
+        state: directory
+
+    - name: Copy Dockerfile to the remote server
+      copy:
+        src: ~/activities/CPE212_FinalProject/Dockerfile
+        dest: ~/docker_project/Dockerfile
+
+    - name: Copy website files to the remote server
+      copy:
+        src: ~/activities/CPE212_FinalProject/website/
+        dest: ~/docker_project/website/
+        recursive: yes
+
+    - name: Build the Docker image
+      docker_image:
+        path: ~/docker_project  # Path to where Dockerfile and website folder exist
+        name: my_website_image
+        tag: latest
+
+    - name: Run the Docker container
+      docker_container:
+        name: my_website_container
+        image: my_website_image:latest
+        state: started
+        ports:
+          - "8080:80"
+        restart_policy: always

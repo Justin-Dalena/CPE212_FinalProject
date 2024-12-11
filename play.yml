@@ -1,0 +1,27 @@
+---
+- name: Deploy Website with Docker
+  hosts: server
+  become: true
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Copy website files to the server
+      copy:
+        src: ./Website
+        dest: /tmp/Website
+
+    - name: Build and run Docker container
+      command: >
+        docker run -d -p 8080:80 --name website_container
+        -v /tmp/Website:/usr/share/nginx/html
+        nginx:latest

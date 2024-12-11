@@ -1,71 +1,43 @@
 ---
-- name: Docker setup and deployment
-  hosts: Docker
+- hosts: all
   become: yes
-  vars:
-    project_dir: /home/{{ ansible_user }}/docker_project
-    ansible_python_interpreter: /usr/bin/python3  # Adjust this path based on your system
   tasks:
-    # Step 1: Install prerequisites and Docker
-    - name: Install required system packages (Debian)
+    - name: Install required packages for Debian/Ubuntu
       apt:
-        name:
+        name: 
           - apt-transport-https
           - ca-certificates
           - curl
           - software-properties-common
-          - python3-pip
         state: present
-        update_cache: yes
       when: ansible_os_family == "Debian"
 
-    - name: Install Docker
+    - name: Install Docker from default repositories (Ubuntu)
       apt:
         name: docker.io
         state: present
       when: ansible_os_family == "Debian"
 
-    - name: Ensure Docker service is running and enabled
+    - name: Start and enable Docker
       service:
         name: docker
         state: started
         enabled: yes
 
-    # Step 2: Install Python Docker module for Ansible
-    - name: Install Docker Python module
-      pip:
-        name: docker
-        executable: pip3
+    - name: Install Python pip for Debian/Ubuntu
+      apt:
+        name: python3-pip
         state: present
+      when: ansible_os_family == "Debian"
 
-    # Step 3: Prepare project directory and files
-    - name: Create Docker project directory
+    - name: Ensure Docker project directory exists on remote nodes
       file:
-        path: "{{ project_dir }}"
+        path: ~/docker_project/website/
         state: directory
+        mode: '0755'
 
-    - name: Copy Dockerfile to the project directory
+    - name: Copy website files from workstation to remote nodes
       copy:
-        src: Dockerfile
-        dest: "{{ project_dir }}/Dockerfile"
-
-    - name: Copy HTML files to the project directory
-      copy:
-        src: html/
-        dest: "{{ project_dir }}/html/"
-
-    # Step 4: Build and run the Docker container
-    - name: Build Docker image
-      docker_image:
-        path: "{{ project_dir }}"
-        name: my-nginx-image
-        state: present
-
-    - name: Run Docker container
-      docker_container:
-        name: my-nginx-container
-        image: my-nginx-image
-        state: started
-        ports:
-          - "80:80"
-        restart_policy: always
+        src: /home/qfmgayao/activities/CPE212_FinalProject/website/
+        dest: ~/docker_project/website/
+        mode: '0644'

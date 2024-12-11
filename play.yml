@@ -30,14 +30,29 @@
         state: present
       when: ansible_os_family == "Debian"
 
-    - name: Ensure Docker project directory exists on remote nodes
-      file:
-        path: ~/docker_project/website/
-        state: directory
-        mode: '0755'
-
-    - name: Copy website files from workstation to remote nodes
-      copy:
-        src: /home/qfmgayao/activities/CPE212_FinalProject/website/
-        dest: ~/docker_project/website/
+    - name: Copy the Dockerfile to remote node
+      ansible.builtin.copy:
+        src: /home/qfmgayao/activities/CPE212_FinalProject/
+        dest: /home/qfmgayao/docker_project/
+        owner: remote_user
+        group: remote_user
         mode: '0644'
+
+    - name: Build Docker image on the remote node
+      docker_image:
+        name: my_website_image
+        build:
+          path: /home/remote_user/  # This path should be where the Dockerfile and website folder are
+        source: build
+        state: present
+
+    - name: Run Docker container to serve website
+      docker_container:
+        name: website_container
+        image: my_website_image
+        state: started
+        ports:
+          - "80:80"  # Expose port 80 (HTTP)
+        volumes:
+          - /home/remote_user/website:/usr/share/nginx/html:ro  # Mount the website folder inside the container
+        restart_policy: unless-stopped

@@ -38,12 +38,12 @@
 
     - name: Copy Dockerfile to the remote server
       copy:
-        src: ~/activities/CPE212_FinalProject/Dockerfile
+        src: /home/qfmgayao/activities/CPE212_FinalProject/Dockerfile
         dest: ~/docker_project/Dockerfile
 
     - name: Copy website files to the remote server
       copy:
-        src: ~/activities/CPE212_FinalProject/website/
+        src: /home/qfmgayao/activities/CPE212_FinalProject/website/
         dest: ~/docker_project/website/
         recursive: yes
 

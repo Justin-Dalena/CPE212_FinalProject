@@ -1,0 +1,71 @@
+- name: Setup Docker, Deploy Application, and Configure Nginx
+  hosts: all
+  become: true
+  tasks:
+    # Install Docker, SDK for Python, and Ensure Docker Service
+    - name: Install pip on Ubuntu
+      apt:
+        name: python3-pip
+        state: present
+        update_cache: yes
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Ensure Docker SDK for Python is installed
+      pip:
+        name: docker
+        state: present
+        executable: pip3
+
+    - name: Install Docker (Ubuntu)
+      apt:
+        name: docker.io
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Start and Enable Docker service
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Ensure Docker is running
+      service:
+        name: docker.service
+        state: started
+        enabled: true
+
+    # Create Dockerfile Directory and Build Image
+    - name: Create Dockerfile directory
+      file:
+        path: /home/qfmgayao/docker_project/
+        state: directory
+
+    - name: Copy Dockerfile to the remote host
+      copy:
+        src: /home/qfmgayao/activities/CPE212_FinalProject/Dockerfile
+        dest: /home/qfmgayao/docker_project/Dockerfile
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Build the Docker image
+      docker_image:
+        path: /home/qfmgayao/docker_project
+        name: my_website_image
+        tag: latest
+
+    # Run Docker Container
+    - name: Run the Docker container
+      docker_container:
+        name: my_website_container
+        image: my_website_image:latest
+        state: started
+        ports:
+          - "8080:80"
+        restart_policy: always
+
+    # Configure Nginx Server
+    - name: Ensure that /etc/nginx/conf.d exists
+      file:
+        path: /etc/nginx/conf.d
+        state: directory

@@ -1,11 +1,10 @@
-FROM ubuntu:latest
+FROM nginx:alpine
 
-# Install nginx
-RUN apt-get update && apt-get install -y nginx
+EXPOSE 80
 
-EXPOSE 8080
+COPY website.html /usr/share/nginx/html
+COPY website.html /var/www/html
 
-COPY ./website /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
 
 

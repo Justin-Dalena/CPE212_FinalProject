@@ -41,13 +41,22 @@
         group: root
         mode: '0644'
 
+    - name: Copy the nginx
+      copy:
+        src: /home/qfmgayao/activities/CPE212_FinalProject/nginx.conf
+        dest: /home/qfmgayao/docker_project/nginx.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+
     # Build Docker image
     - name: Build Docker image
       docker_image:
         name: webapp
         source: build
         build:
-          path: /home/qfmgayao/docker_project
+          path: /home/qfmgayao/docker_project/website.html
         state: present
         tag: latest
 
@@ -58,6 +67,6 @@
         image: webapp:latest
         state: started
         ports:
-          - "0:8080"
+          - "8080:80"
         restart_policy: always
 

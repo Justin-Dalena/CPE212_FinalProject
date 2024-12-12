@@ -41,14 +41,6 @@
         group: root
         mode: '0644'
 
-    - name: Copy the nginx
-      copy:
-        src: /home/qfmgayao/activities/CPE212_FinalProject/nginx.conf
-        dest: /home/qfmgayao/docker_project/nginx.conf
-        owner: root
-        group: root
-        mode: '0644'
-
 
     # Build Docker image
     - name: Build Docker image

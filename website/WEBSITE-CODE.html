@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM ABSENT FINAL PROJECT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Images/bg%20sysad%20proj.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 10px;
+        }
+        .column {
+            flex: 1;
+            max-width: 22%;
+            margin: 10px;
+            text-align: center;
+        }
+        .column img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            border-radius: 0%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+		.column-header {
+			font-size: 18px; /* Adjust the size as needed */
+			color: #333; /* Text color */
+			margin: 10px 0; /* Add spacing between the image and the header */
+			text-align: center; /* Center-align the text */
+			font-weight: bold; /* Make the text bold */
+			border: 2px solid #007bff; /* Add a solid border */
+			border-radius: 8px; /* Rounded corners (optional) */
+			padding: 5px; /* Add space inside the border */
+			background-color: #f0f8ff; /* Add background color (optional) */
+			width: fit-content; /* Make the width fit the content */
+			margin-left: auto; /* Center horizontally */
+			margin-right: auto; /* Center horizontally */
+		}		
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .dropdown button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown button:hover {
+            background-color: #0056b3;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .column {
+                max-width: 45%;
+            }
+        }
+        @media (max-width: 480px) {
+            .column {
+                max-width: 100%;
+            }
+        }
+		h1 {
+			color: #3498db;
+			text-align: center;
+			padding: 15px;
+			border: 2px solid #3498db;
+			border-radius: 15px;
+			background-color: #f0f8ff;
+			width: 50%;
+			margin: 0 auto;
+			}	
+    </style>
+</head>
+<body>
+    <h1>FINAL PROJECT COMPILATION</h1>
+    <div class="container">
+        <div class="column">
+            <img src="https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Images/Dalena.jpg" alt="Picture 1"> 
+            <h2 class="column-header">Dalena, Justin Miguel S.</h2>
+            <div class="dropdown">
+                <button>Prelim Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act1.pdf', 'Prelim File 1')">Activity 1</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/PrelimExam.pdf', 'Prelim File 2')">Prelim Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Midterm Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act6.pdf', 'Midterm File 1')">Activity 6</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act7.pdf', 'Midterm File 2')">Activity 7</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act8.pdf', 'Midterm File 1')">Activity 8</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/MidtermExam.pdf', 'Midterm File 1')">Midterm Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Finals Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act11.pdf', 'Finals File 1')">Activity 11</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act12.pdf', 'Finals File 2')">Activity 12</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Dalena/Act13.pdf', 'Finals File 1')">Activity 13</a>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <img src="https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Images/Escosia .jpeg" alt="Picture 1"> 
+			<h3 class="column-header">Escosia, Jerico James I.</h3>
+            <div class="dropdown">
+                <button>Prelim Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act1.pdf', 'Prelim File 1')">Activity 1</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act2.pdf', 'Prelim File 2')">Activity 2</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act3.pdf', 'Prelim File 1')">Activity 3</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act4.pdf', 'Prelim File 2')">Activity 4</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/PrelimExam.pdf', 'Prelim File 1')">Prelim Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Midterm Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act5.pdf', 'Midterm File 1')">Activity 5</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act6.pdf', 'Midterm File 2')">Activity 6</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act7.pdf', 'Midterm File 1')">Activity 7</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act8.pdf', 'Midterm File 2')">Activity 8</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/MidtermExam.pdf', 'Midterm File 1')">Midterm Skills Exam</a>
+
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Finals Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act10.pdf', 'Prelim File 1')">Activity 10</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act11.pdf', 'Prelim File 2')">Activity 11</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act12.pdf', 'Prelim File 1')">Activity 12</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Escosia/Act13.pdf', 'Prelim File 2')">Activity 13</a>
+                </div>
+            </div>
+        </div>
+		<div class="column">
+            <img src="https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Images/Frias.jpg" alt="Picture 1"> 
+			<h4 class="column-header">Frias, Abegail L.</h4>
+            <div class="dropdown">
+                <button>Prelim Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act1.pdf', 'Prelim File 1')">Activity 1</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act2.pdf', 'Prelim File 2')">Activity 2</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act3.pdf', 'Prelim File 1')">Activity 3</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act4.pdf', 'Prelim File 2')">Activity 4</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/PrelimExam.pdf', 'Prelim File 1')">Prelim Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Midterm Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act5.pdf', 'Midterm File 1')">Activity 5</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act6.pdf', 'Midterm File 2')">Activity 6</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act7.pdf', 'Midterm File 1')">Activity 7</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act8.pdf', 'Midterm File 2')">Activity 8</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act9.pdf', 'Midterm File 1')">Activity 9</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/MidtermExam.pdf', 'Midterm File 2')">Midterm Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Finals Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act10.pdf', 'Prelim File 1')">Activity 10</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act11.pdf', 'Prelim File 2')">Activity 11</a>
+					<a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act12.pdf', 'Prelim File 1')">Activity 12</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Frias/Act13.pdf', 'Prelim File 2')">Activity 13</a>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <img src="https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Images/Test_image.jpg" alt="Picture 2">
+			<h5 class="column-header">Gayao, Froilan Manuel</h5>
+            <div class="dropdown">
+                <button>Prelim Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act1.pdf', 'Prelim File 3')">Activity 1</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act3.pdf', 'Prelim File 4')">Activity 3</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/PrelimExam.pdf', 'Prelim File 3')">Prelim Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Midterm Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act5.pdf', 'Midterm File 3')">Activity 5</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act6.pdf', 'Midterm File 4')">Activity 6</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act7.pdf', 'Midterm File 3')">Activity 7</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act8.pdf', 'Midterm File 4')">Activity 8</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act9.pdf', 'Midterm File 3')">Activity 9</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/MidtermExam.pdf', 'Midterm File 4')">Midterm Skills Exam</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button>Finals Files</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act10.pdf', 'Finals File 3')">Activity 10</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act12.pdf', 'Finals File 4')">Activity 12</a>
+                    <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/Justin-Dalena/CPE212_FinalProject/refs/heads/main/website/Gayao/Act13.pdf', 'Finals File 3')">Activity 13</a>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function downloadFile(url, filename) {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+            window.downloadFile = downloadFile; // Make the function globally accessible
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+- name: Setup Docker, Deploy Application, and Configure Nginx
+  hosts: all
+  become: yes
+  tasks:
+    # Install Docker on Ubuntu
+    - name: Install Docker on Ubuntu
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    # Start and Enable Docker Service
+    - name: Start and Enable Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    # Ensure docker_project directory exists
+    - name: Ensure docker_project directory exists
+      file:
+        path: /home/qfmgayao/docker_project
+        state: directory
+        mode: '0755'
+
+    # Copy the Dockerfile
+    - name: Copy the Dockerfile
+      copy:
+        src: /home/qfmgayao/activities/CPE212_FinalProject/Dockerfile
+        dest: /home/qfmgayao/docker_project/Dockerfile
+        owner: root
+        group: root
+        mode: '0644'
+
+    # Copy the website HTML file
+    - name: Copy index file
+      copy:
+        src: /home/qfmgayao/activities/CPE212_FinalProject/website/website.html
+        dest: /home/qfmgayao/docker_project/website.html
+        owner: root
+        group: root
+        mode: '0644'
+
+    # Build Docker image
+    - name: Build Docker image
+      docker_image:
+        name: webapp
+        source: build
+        build:
+          path: /home/qfmgayao/docker_project
+        state: present
+        tag: latest
+
+    # Run Docker container
+    - name: Run Docker container
+      docker_container:
+        name: web_app
+        image: webapp:latest
+        state: started
+        ports:
+          - "0:8080"
+        restart_policy: always
+
